@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div data-role="page" id="page1">
+    <div data-theme="b" data-role="header">
+        <div style="text-align: center">
+            <h3>Trul.Framework - Mobile
+            </h3>
+        </div>
+    </div>
+    <div data-role="content">
+        <div data-role="fieldcontain" class="ui-hide-label">
+            <label for="txtFirstName">First Name:</label>
+            <input type="text" name="username" id="txtFirstName" data-bind="value: HomeModel.FirstName" placeholder="First Name" />
+        </div>
+        <div data-role="fieldcontain" class="ui-hide-label">
+            <label for="txtLastName">Last Name:</label>
+            <input type="text" name="username" id="txtLastName" data-bind="value: HomeModel.LastName" placeholder="Last Name" />
+        </div>
+        <div data-role="fieldcontain" class="ui-hide-label">
+            <label for="ddlCountry">Country:</label>
+            <select id="ddlCountry" data-bind="options: HomeModel.Countries, value: HomeModel.SelectedCountry, optionsValue : 'ID', optionsText: 'Name'"></select>
+        </div>
+        <input type="submit" data-theme="b" value="Save" data-bind="click: save">
+        <div id="divPopup" data-role="popup">
+            <span id="partialModalBody"></span>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    var data = @Html.Raw(Model.ToJS());
+    
+    var ViewModel = function()
+    {
+        this.HomeModel = ko.mapping.fromJS(data);
+        this.save = function(){
+            $("#partialModalBody").text(ko.mapping.toJSON(this.HomeModel));
+            $('#divPopup').popup('open');
+        };
+        this.IsNameNull = ko.computed(function(){
+            return this.HomeModel.FirstName().length > 0;
+        }, this);
+    }
+
+    ko.applyBindings(new ViewModel());
+</script>

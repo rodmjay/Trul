@@ -1,0 +1,60 @@
+﻿@model Trul.Application.UI.Core.Models.HomeViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<div class="container">
+    <span data-bind="visible:IsNameNull">
+        <h3>Hi, <span data-bind="text: HomeModel.FirstName"></span></h3>
+    </span>
+    <div class="alert alert-info">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <h4>Heyyy!</h4>
+        What's going on?
+    </div>
+    <div class="form-horizontal">
+        <div class="control-group">
+            <label class="control-label" for="inputFirstName">First name:</label>
+            <div class="controls">
+                <input type="text" id="inputFirstName" data-bind="value: HomeModel.FirstName" />
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="inputLastName">Last name:</label>
+            <div id="inputLastName" class="controls">
+                <input type="text" data-bind="value: HomeModel.LastName" />
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="ddlMenu">Menu:</label>
+            <div id="ddlMenu" class="controls">
+                <select data-bind="options: HomeModel.Countries, value: HomeModel.SelectedCountry, optionsValue : 'ID', optionsText: 'Name'"></select>
+            </div>
+        </div>
+    </div>
+    <div class="form-actions">
+        <input type="button" data-bind="click: save" class="btn btn-large btn-primary" value="Save" />
+    </div>
+</div>
+
+@Html.Partial("_Modal")
+
+<script type="text/javascript">
+
+    var data = @Html.Raw(Model.ToJS());
+    
+    var ViewModel = function()
+    {
+        this.HomeModel = ko.mapping.fromJS(data);
+        this.save = function(){
+            $("#partialModalBody").text(ko.mapping.toJSON(this.HomeModel));
+            $('#partialModal').modal('toggle');
+        };
+        this.IsNameNull = ko.computed(function(){
+            return this.HomeModel.FirstName().length > 0;
+        }, this);
+    }
+
+    ko.applyBindings(new ViewModel());
+</script>

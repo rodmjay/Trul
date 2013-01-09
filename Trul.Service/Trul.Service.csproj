@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D495D0DB-62D0-4060-9211-66AA51D25C81}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Trul.Service</RootNamespace>
+    <AssemblyName>Trul.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Generators\CountryService.cs">
+      <DependentUpon>RepositoryService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generators\MenuService.cs">
+      <DependentUpon>RepositoryService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generators\PersonService.cs">
+      <DependentUpon>RepositoryService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generators\RepositoryService.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RepositoryService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PersonService.cs" />
+    <Compile Include="RepositoryService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Trul.Application.DTO\Trul.Application.DTO.csproj">
+      <Project>{fce2a9a6-2f56-42bd-ba51-92f274de2e98}</Project>
+      <Name>Trul.Application.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Trul.Application\Trul.Application.csproj">
+      <Project>{66348945-351a-4cfe-bc9e-426552fff7c9}</Project>
+      <Name>Trul.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Trul.Data.Core\Trul.Data.Core.csproj">
+      <Project>{e16b7ad7-29e4-4bc1-b60a-3bbc17020117}</Project>
+      <Name>Trul.Data.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Trul.Data\Trul.Data.csproj">
+      <Project>{5998dba6-210c-4ce2-b319-4620023fceb6}</Project>
+      <Name>Trul.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Trul.Domain.Core\Trul.Domain.Core.csproj">
+      <Project>{f2d33f05-9f0a-42b8-a954-e8b4296170e1}</Project>
+      <Name>Trul.Domain.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Trul.Domain\Trul.Domain.csproj">
+      <Project>{c37d056c-adf2-4fb9-88e3-3dbd3e8f903b}</Project>
+      <Name>Trul.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Trul.Framework\Trul.Framework.csproj">
+      <Project>{b884cc43-e425-4b4f-92e1-426d2f41eb7a}</Project>
+      <Name>Trul.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Trul.Infrastructure.Crosscutting\Trul.Infrastructure.Crosscutting.csproj">
+      <Project>{964421c2-ddfe-4d52-8b5c-b22f60d820dc}</Project>
+      <Name>Trul.Infrastructure.Crosscutting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Trul.Service.Core\Trul.Service.Core.csproj">
+      <Project>{258131f7-e28d-4aa4-863e-d710d628dfe6}</Project>
+      <Name>Trul.Service.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Generators\RepositoryService.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>RepositoryService.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

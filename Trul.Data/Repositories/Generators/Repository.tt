@@ -1,0 +1,56 @@
+﻿<#@ include file="$(SolutionDir)Trul.Framework\Trul.ttinclude" #>
+<#@ assembly name="$(ProjectDir)$(OutDir)Trul.Domain.dll" #>
+<#@ assembly name="$(ProjectDir)$(OutDir)Trul.Domain.Core.dll" #>
+<#         
+var type = typeof(Trul.Domain.Core.IEntityWithTypedId<>);
+var types = AppDomain.CurrentDomain.GetAssemblies().ToList()
+    .SelectMany(s => s.GetTypes())
+    .Where(p => p.GetInterface(type.FullName) != null && !p.IsInterface
+	       && !new string[]{"Entity", "DelEntity", "EntityWithTypedId`1", "DelEntityWithTypedId`1"}.Contains(p.Name));
+
+foreach(var item in types) {
+	var delRepository = item.GetInterface(typeof(Trul.Domain.Core.IDelEntity).FullName) != null;
+	GenerateIRepository(item.Name, item.GetProperty("ID").PropertyType.Name, delRepository ? "Del" : "");	
+    
+	string fileName = string.Format("{0}Repository.cs", item.Name);
+	string templateDirectory = Path.GetDirectoryName(Host.TemplateFile);
+	string outputFilePath = Path.Combine(templateDirectory, fileName);
+	SaveOutput(fileName);
+	AddFileToProject(outputFilePath);  
+}
+#>
+
+<#+
+    void GenerateIRepository(string entityName, string idType, string delRepository)
+    {
+#>
+/*
+	Automatik generate edilen repository class. Burada değişiklik yapmayın!
+*/
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Trul.Data.Core;
+using Trul.Domain.Entities;
+using Trul.Domain.Repositories;
+
+namespace Trul.Data.Repositories
+{
+    public partial class <#=entityName#>Repository : <#=delRepository#>Repository<<#=entityName#>, <#=idType#>>, I<#=entityName#>Repository
+    {
+        /// <summary>
+        /// <#=entityName#>Repository
+        /// </summary>
+        /// <param name="unitOfWork"></param>
+        public <#=entityName#>Repository(UnitOfWork unitOfWork)
+            : base(unitOfWork)
+        {
+
+        }
+    }
+}
+<#+
+}
+#>
