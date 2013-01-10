@@ -63,7 +63,13 @@ namespace Trul.Service
 
         public virtual IList<TDTOEntity> GetPaged<KProperty>(int pageIndex, int pageCount, Expression<Func<TDTOEntity, KProperty>> orderByExpression, bool ascending, params Expression<Func<TDTOEntity, object>>[] includes)
         {
-            throw new NotImplementedException();
+            var translatedCondition = Translate<Func<TEntity, KProperty>>(orderByExpression);
+            Expression<Func<TEntity, object>>[] translatedIncludes = null;
+            if (includes != null)
+            {
+                translatedIncludes = includes.Select(inc => TranslateInclude<Func<TEntity, object>>(inc)).ToArray();
+            }
+            return ((IEnumerable<IEntityWithTypedId<TId>>)Repository.GetPaged<KProperty>(pageIndex, pageCount, translatedCondition, ascending, translatedIncludes)).ProjectedAsCollection<TDTOEntity, TId>();
         }
 
         public virtual IList<TDTOEntity> GetFiltered(Expression<Func<TDTOEntity, bool>> filter, params Expression<Func<TDTOEntity, object>>[] includes)
