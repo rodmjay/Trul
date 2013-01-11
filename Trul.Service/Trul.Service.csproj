@@ -71,9 +71,9 @@
       <Project>{e16b7ad7-29e4-4bc1-b60a-3bbc17020117}</Project>
       <Name>Trul.Data.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Trul.Data\Trul.Data.csproj">
-      <Project>{5998dba6-210c-4ce2-b319-4620023fceb6}</Project>
-      <Name>Trul.Data</Name>
+    <ProjectReference Include="..\Trul.Data.EntityFramework\Trul.Data.EntityFramework.csproj">
+      <Project>{b341d32c-a255-4062-80dc-9a31090a0db5}</Project>
+      <Name>Trul.Data.EntityFramework</Name>
     </ProjectReference>
     <ProjectReference Include="..\Trul.Domain.Core\Trul.Domain.Core.csproj">
       <Project>{f2d33f05-9f0a-42b8-a954-e8b4296170e1}</Project>

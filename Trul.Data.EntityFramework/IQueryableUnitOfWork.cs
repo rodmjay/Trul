@@ -1,7 +1,8 @@
 ﻿using System.Data.Entity;
+using Trul.Data.Core;
 using Trul.Domain.Core;
 
-namespace Trul.Data.Core
+namespace Trul.Data.EntityFramework
 {
     /// <summary>
     /// The UnitOfWork contract for EF implementation

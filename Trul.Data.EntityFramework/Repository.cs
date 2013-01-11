@@ -4,14 +4,15 @@ using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using Trul.Data.Core.Resources;
+using Trul.Data.Core;
+using Trul.Data.EntityFramework.Resources;
 using Trul.Domain.Core;
 using Trul.Infrastructure.Crosscutting.Logging;
 
-namespace Trul.Data.Core
+namespace Trul.Data.EntityFramework
 {
     /// <summary>
-    /// Repository base class
+    /// Repository class
     /// </summary>
     /// <typeparam name="TEntity">The type of underlying entity in this repository</typeparam>
     public class Repository<TEntity, TId> : IRepository<TEntity, TId>

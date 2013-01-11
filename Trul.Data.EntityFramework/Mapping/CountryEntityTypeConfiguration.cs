@@ -5,7 +5,7 @@ using System.Text;
 using System.Data.Entity.ModelConfiguration;
 using Trul.Domain.Entities;
 
-namespace Trul.Data.Mapping
+namespace Trul.Data.EntityFramework.Mapping
 {
     public class CountryEntityTypeConfiguration : EntityTypeConfiguration<Country>
     {

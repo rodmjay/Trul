@@ -4,11 +4,12 @@ using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using Trul.Data.Core;
 using Trul.Domain.Core;
 using Trul.Framework;
 using Trul.Framework.Helper;
 
-namespace Trul.Data.Core
+namespace Trul.Data.EntityFramework
 {
     public abstract class DelRepository<TEntity, TId> : Repository<TEntity, TId>
         where TEntity : class, IEntityWithTypedId<TId>, IDelEntity, new()

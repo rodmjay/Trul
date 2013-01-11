@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Trul.Infrastructure.Crosscutting.IoC;
 
-namespace Trul.Data
+namespace Trul.Data.EntityFramework
 {
     public class Bootstrapper
     {

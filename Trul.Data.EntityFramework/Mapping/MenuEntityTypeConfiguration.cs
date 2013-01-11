@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using Trul.Domain.Entities;
 
-namespace Trul.Data.Mapping
+namespace Trul.Data.EntityFramework.Mapping
 {
     public class MenuEntityTypeConfiguration : EntityTypeConfiguration<Menu>
     {

@@ -1,3 +1,5 @@
+
+
 /*
 	Automatik generate edilen repository class. Burada değişiklik yapmayın!
 */
@@ -10,15 +12,15 @@ using Trul.Data.Core;
 using Trul.Domain.Entities;
 using Trul.Domain.Repositories;
 
-namespace Trul.Data.Repositories
+namespace Trul.Data.EntityFramework.Repositories
 {
-    public partial class MenuRepository : Repository<Menu, Int32>, IMenuRepository
+    public partial class PersonRepository : DelRepository<Person, Int32>, IPersonRepository
     {
         /// <summary>
-        /// MenuRepository
+        /// PersonRepository
         /// </summary>
         /// <param name="unitOfWork"></param>
-        public MenuRepository(UnitOfWork unitOfWork)
+        public PersonRepository(UnitOfWork unitOfWork)
             : base(unitOfWork)
         {
 

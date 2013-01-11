@@ -7,10 +7,10 @@ using System.Linq;
 using System.Text;
 using Trul.Data.Core;
 using Trul.Domain.Entities;
-using Trul.Data.Mapping;
+using Trul.Data.EntityFramework.Mapping;
 using Trul.Domain.Core;
 
-namespace Trul.Data
+namespace Trul.Data.EntityFramework
 {
     public class UnitOfWork
         : DbContext, IQueryableUnitOfWork

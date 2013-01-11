@@ -10,7 +10,7 @@ using Trul.Data.Core;
 using Trul.Domain.Entities;
 using Trul.Domain.Repositories;
 
-namespace Trul.Data.Repositories
+namespace Trul.Data.EntityFramework.Repositories
 {
     public partial class CountryRepository : DelRepository<Country, Int32>, ICountryRepository
     {
