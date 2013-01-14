@@ -10,7 +10,6 @@ using Trul.Domain.Entities;
 using Trul.Data.EntityFramework.Mapping;
 using Trul.Domain.Core;
 using Trul.Framework;
-using Trul.Data.EntityFramework.Helper;
 
 namespace Trul.Data.EntityFramework
 {
@@ -131,14 +130,14 @@ namespace Trul.Data.EntityFramework
 
         #region ISql Members
 
-        public IEnumerable<TEntity> ExecuteQuery<TEntity>(string sqlQuery, params DatabaseParameter[] parameters)
+        public IEnumerable<TEntity> ExecuteQuery<TEntity>(string sqlQuery, params object[] parameters)
         {
-            return base.Database.SqlQuery<TEntity>(sqlQuery, parameters.ToSqlParameters());
+            return base.Database.SqlQuery<TEntity>(sqlQuery, parameters);
         }
 
-        public int ExecuteCommand(string sqlCommand, params DatabaseParameter[] parameters)
+        public int ExecuteCommand(string sqlCommand, params object[] parameters)
         {
-            return base.Database.ExecuteSqlCommand(sqlCommand, parameters.ToSqlParameters());
+            return base.Database.ExecuteSqlCommand(sqlCommand, parameters);
         }
 
         #endregion

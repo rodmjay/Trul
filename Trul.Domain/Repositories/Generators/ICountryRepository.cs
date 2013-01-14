@@ -14,7 +14,7 @@ namespace Trul.Domain.Repositories
     /// <summary>
     /// ICountryRepository
     /// </summary>
-    public interface ICountryRepository : IRepository<Country, Int32>
+    public partial interface ICountryRepository : IRepository<Country, Int32>
     {
     }
 }

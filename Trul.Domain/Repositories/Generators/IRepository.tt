@@ -39,7 +39,7 @@ namespace Trul.Domain.Repositories
     /// <summary>
     /// I<#=entityName#>Repository
     /// </summary>
-    public interface I<#=entityName#>Repository : IRepository<<#=entityName#>, <#=idType#>>
+    public partial interface I<#=entityName#>Repository : IRepository<<#=entityName#>, <#=idType#>>
     {
     }
 }

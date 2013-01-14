@@ -1,3 +1,5 @@
+
+
 /*
 	Automatik generate edilen repository interface. Burada değişiklik yapmayın!
 */
@@ -14,7 +16,7 @@ namespace Trul.Domain.Repositories
     /// <summary>
     /// IPersonRepository
     /// </summary>
-    public interface IPersonRepository : IRepository<Person, Int32>
+    public partial interface IPersonRepository : IRepository<Person, Int32>
     {
     }
 }

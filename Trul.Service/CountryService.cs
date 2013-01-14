@@ -10,6 +10,7 @@ using Trul.Application;
 using System.Data.Common;
 using System.Data.SqlClient;
 using Trul.Framework;
+using Trul.Domain.Repositories;
 
 namespace Trul.Service
 {
@@ -17,7 +18,7 @@ namespace Trul.Service
     {
         public IList<CountryDTO> GetCountriesBySP()
         {
-            var countries = ((ISql)Repository.UnitOfWork).ExecuteQuery<Country>("Select CountryID ID, Name, IsDeleted From Country Where IsDeleted = @IsDeleted", new DatabaseParameter("@IsDeleted", false));
+            var countries = ((ICountryRepository)Repository).GetCountriesBySP();
             return ((IEnumerable<IEntityWithTypedId<Int32>>)countries).ProjectedAsCollection<CountryDTO, Int32>();
         }
     }

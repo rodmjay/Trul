@@ -1,5 +1,3 @@
-
-
 /*
 	Automatik generate edilen repository interface. Burada değişiklik yapmayın!
 */
@@ -16,7 +14,7 @@ namespace Trul.Domain.Repositories
     /// <summary>
     /// IMenuRepository
     /// </summary>
-    public interface IMenuRepository : IRepository<Menu, Int32>
+    public partial interface IMenuRepository : IRepository<Menu, Int32>
     {
     }
 }

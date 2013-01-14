@@ -45,6 +45,7 @@
     <Compile Include="Entities\Country.cs" />
     <Compile Include="Entities\Menu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ICountryRepository.cs" />
     <Compile Include="Repositories\Generators\ICountryRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>

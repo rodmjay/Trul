@@ -46,12 +46,12 @@
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="DelRepository.cs" />
-    <Compile Include="Helper\DatabaseParameterHelper.cs" />
     <Compile Include="IQueryableUnitOfWork.cs" />
     <Compile Include="Mapping\CountryEntityTypeConfiguration.cs" />
     <Compile Include="Mapping\MenuEntityTypeConfiguration.cs" />
     <Compile Include="Mapping\PersonEntityTypeConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\CountryRepository.cs" />
     <Compile Include="Repositories\Generators\CountryRepository.cs">
       <DependentUpon>Repository.tt</DependentUpon>
     </Compile>
