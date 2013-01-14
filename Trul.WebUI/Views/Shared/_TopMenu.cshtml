@@ -1,0 +1,12 @@
+﻿@model string
+<div class="navbar">
+    <div class="navbar-inner">
+        <ul class="nav">
+            <li class="@(Model.Equals("Home") ? "active" : "")">
+                @Html.ActionLink("Home", "Index", "Home")
+            </li>
+            <li class="@(Model.Equals("Country") ? "active" : "")">
+                @Html.ActionLink("Country", "Index", "Country")</li>
+        </ul>
+    </div>
+</div>

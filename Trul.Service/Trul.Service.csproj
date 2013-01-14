@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="CountryService.cs" />
     <Compile Include="Generators\CountryService.cs">
       <DependentUpon>RepositoryService.tt</DependentUpon>
     </Compile>

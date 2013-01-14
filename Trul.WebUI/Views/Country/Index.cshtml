@@ -1,0 +1,15 @@
+﻿@model Trul.Application.UI.Core.Models.CountryViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+
+@Html.Partial("_TopMenu", "Country")
+
+<ul>
+    @foreach (var CountryItem in Model.Countries)
+    {
+        <li><span class="badge">@CountryItem.ID.ToString()</span> @CountryItem.Name</li>
+    }
+</ul>

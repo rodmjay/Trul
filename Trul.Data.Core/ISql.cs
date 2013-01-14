@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Trul.Framework;
 
 namespace Trul.Data.Core
 {
@@ -24,7 +25,7 @@ namespace Trul.Data.Core
         /// <returns>
         /// Enumerable results 
         /// </returns>
-        IEnumerable<TEntity> ExecuteQuery<TEntity>(string sqlQuery, params object[] parameters);
+        IEnumerable<TEntity> ExecuteQuery<TEntity>(string sqlQuery, params DatabaseParameter[] parameters);
 
         /// <summary>
         /// Execute arbitrary command into underliying persistence store
@@ -37,6 +38,6 @@ namespace Trul.Data.Core
         ///</param>
         /// <param name="parameters">A vector of parameters values</param>
         /// <returns>The number of affected records</returns>
-        int ExecuteCommand(string sqlCommand, params object[] parameters);
+        int ExecuteCommand(string sqlCommand, params DatabaseParameter[] parameters);
     }
 }

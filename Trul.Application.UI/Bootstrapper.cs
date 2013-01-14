@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Trul.Application.UI.Task;
 using Trul.Infrastructure.Crosscutting.IoC;
 using Trul.Service;
 using Trul.Service.Core;

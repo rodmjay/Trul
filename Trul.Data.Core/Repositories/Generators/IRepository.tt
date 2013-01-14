@@ -1,0 +1,48 @@
+﻿<#@ include file="$(SolutionDir)Trul.Framework\Trul.ttinclude" #>
+<#@ assembly name="$(ProjectDir)$(OutDir)Trul.Domain.dll" #>
+<#@ assembly name="$(ProjectDir)$(OutDir)Trul.Domain.Core.dll" #>
+<#         
+var type = typeof(Trul.Domain.Core.IEntityWithTypedId<>);
+var types = AppDomain.CurrentDomain.GetAssemblies().ToList()
+    .SelectMany(s => s.GetTypes())
+    .Where(p => p.GetInterface(type.FullName) != null && !p.IsInterface
+	       && !new string[]{"Entity", "DelEntity", "EntityWithTypedId`1", "DelEntityWithTypedId`1"}.Contains(p.Name));
+
+foreach(var item in types) {
+	GenerateIRepository(item.Name, item.GetProperty("ID").PropertyType.Name);	
+
+	string fileName = string.Format("I{0}Repository.cs", item.Name);
+	string templateDirectory = Path.GetDirectoryName(Host.TemplateFile);
+	string outputFilePath = Path.Combine(templateDirectory, fileName);
+	SaveOutput(fileName);
+	AddFileToProject(outputFilePath);  
+}
+#>
+
+<#+
+    void GenerateIRepository(string entityName, string idType)
+    {
+#>
+/*
+	Automatik generate edilen repository interface. Burada değişiklik yapmayın!
+*/
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Trul.Domain.Entities;
+using Trul.Data.Core;
+
+namespace Trul.Data.Repositories
+{
+    /// <summary>
+    /// I<#=entityName#>Repository
+    /// </summary>
+    public interface I<#=entityName#>Repository : IRepository<<#=entityName#>, <#=idType#>>
+    {
+    }
+}
+<#+
+}
+#>

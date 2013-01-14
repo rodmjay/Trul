@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tasks\CountryTask.cs" />
     <Compile Include="Tasks\HomeTask.cs" />
   </ItemGroup>
   <ItemGroup>

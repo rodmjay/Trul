@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatabaseParameter.cs" />
     <Compile Include="Disposable.cs" />
     <Compile Include="Helper\LinqHelper.cs" />
     <Compile Include="Infrastructure\Expressions\ITranslatingExpressionVisitor.cs" />

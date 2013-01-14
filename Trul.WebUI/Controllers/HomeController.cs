@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Trul.Application.UI.Core.Tasks;
-using Trul.Application.UI.Task;
 
 namespace Trul.WebUI.Controllers
 {

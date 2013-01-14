@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="DelRepository.cs" />
+    <Compile Include="Helper\DatabaseParameterHelper.cs" />
     <Compile Include="IQueryableUnitOfWork.cs" />
     <Compile Include="Mapping\CountryEntityTypeConfiguration.cs" />
     <Compile Include="Mapping\MenuEntityTypeConfiguration.cs" />

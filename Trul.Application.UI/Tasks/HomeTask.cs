@@ -7,7 +7,7 @@ using Trul.Application.UI.Core.Models;
 using Trul.Application.UI.Core.Tasks;
 using Trul.Service.Core;
 
-namespace Trul.Application.UI.Task
+namespace Trul.Application.UI.Tasks
 {
     public class HomeTask : TaskBase, IHomeTask
     {

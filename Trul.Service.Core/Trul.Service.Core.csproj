@@ -54,6 +54,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>IRepositoryService.tt</DependentUpon>
     </Compile>
+    <Compile Include="ICountryService.cs" />
     <Compile Include="IPersonService.cs" />
     <Compile Include="IRepositoryService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

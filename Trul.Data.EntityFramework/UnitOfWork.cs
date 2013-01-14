@@ -9,6 +9,8 @@ using Trul.Data.Core;
 using Trul.Domain.Entities;
 using Trul.Data.EntityFramework.Mapping;
 using Trul.Domain.Core;
+using Trul.Framework;
+using Trul.Data.EntityFramework.Helper;
 
 namespace Trul.Data.EntityFramework
 {
@@ -127,15 +129,19 @@ namespace Trul.Data.EntityFramework
                               .ForEach(entry => entry.State = System.Data.EntityState.Unchanged);
         }
 
-        public IEnumerable<TEntity> ExecuteQuery<TEntity>(string sqlQuery, params object[] parameters)
+        #region ISql Members
+
+        public IEnumerable<TEntity> ExecuteQuery<TEntity>(string sqlQuery, params DatabaseParameter[] parameters)
         {
-            return base.Database.SqlQuery<TEntity>(sqlQuery, parameters);
+            return base.Database.SqlQuery<TEntity>(sqlQuery, parameters.ToSqlParameters());
         }
 
-        public int ExecuteCommand(string sqlCommand, params object[] parameters)
+        public int ExecuteCommand(string sqlCommand, params DatabaseParameter[] parameters)
         {
-            return base.Database.ExecuteSqlCommand(sqlCommand, parameters);
+            return base.Database.ExecuteSqlCommand(sqlCommand, parameters.ToSqlParameters());
         }
+
+        #endregion
 
         #endregion
 

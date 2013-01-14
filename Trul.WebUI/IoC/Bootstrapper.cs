@@ -6,9 +6,9 @@ using System.Web.Mvc;
 using Castle.Windsor;
 using CommonServiceLocator.WindsorAdapter;
 using Microsoft.Practices.ServiceLocation;
-using Trul.Application.UI.Task;
 using Trul.Infrastructure.Crosscutting.Windsor;
 using Trul.Application.UI.Core.Tasks;
+using Trul.Application.UI.Tasks;
 
 namespace Trul.WebUI.IoC
 {
@@ -27,6 +27,7 @@ namespace Trul.WebUI.IoC
 
         private static void Configure() {
             Trul.Infrastructure.Crosscutting.IoC.IoC.Container.Register(typeof(IHomeTask), typeof(HomeTask));
+            Trul.Infrastructure.Crosscutting.IoC.IoC.Container.Register(typeof(ICountryTask), typeof(CountryTask));
         }
     }
 }
