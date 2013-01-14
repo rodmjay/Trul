@@ -6,6 +6,7 @@ using Trul.Application.DTO;
 
 namespace Trul.Application.UI.Core.Models
 {
+    [Serializable]
     public class CountryViewModel : ViewModelBase
     {
         public CountryViewModel()

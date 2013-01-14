@@ -6,10 +6,59 @@
 <br />
 
 @Html.Partial("_TopMenu", "Country")
+<div class="row">
+    <div class="span4">
+        <ul>
+            @foreach (var CountryItem in Model.Countries)
+            {
+                <li><span class="badge">@CountryItem.ID.ToString()</span> @CountryItem.Name</li>
+            }
+        </ul>
+    </div>
+    <div class="span2">
+        <div class="btn-group btn-group-vertical">
+            <a class="btn" href="#" data-bind="click: bindData"><i class="icon-refresh"></i>&nbsp;Bind Data</a>
+            <a class="btn" href="#" data-bind="click: removeCountries"><i class="icon-remove"></i>&nbsp;Remove</a>
+            <a class="btn" href='@Url.Action("Index", "Country", new { isLoadData = true })'><i class="icon-refresh"></i>&nbsp;Bind Data On Server</a>
+        </div>
+    </div>
+    <div class="span3">
+        <ul id="results" data-bind="foreach: CountryModel.Countries">
+            <li><span data-bind="text: Name"></span></li>
+        </ul>
+    </div>
+</div>
 
-<ul>
-    @foreach (var CountryItem in Model.Countries)
+<script type="text/javascript">
+    
+    var data = @Html.Raw(Model.ToJS());
+    
+    var ViewModel = function()
     {
-        <li><span class="badge">@CountryItem.ID.ToString()</span> @CountryItem.Name</li>
+        var self = this;
+        self.CountryModel = ko.mapping.fromJS(data);
+        self.bindData = function(){
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("GetCountries", "Country")',
+                data: {},
+                datatype: "json",
+                success: function (result) {
+                    self.CountryModel.Countries.removeAll();
+                    $.each(result, function (i, item) {
+                        self.CountryModel.Countries.push(item);
+                    });
+                },
+                error: function (req, status, error) {
+                    alert(error + " " + req);
+                }
+            });
+        };
+        self.removeCountries = function()
+        {
+            self.CountryModel.Countries.removeAll();
+        }
     }
-</ul>
+
+    ko.applyBindings(new ViewModel());
+</script>
