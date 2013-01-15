@@ -6,10 +6,13 @@ using System.Web.Helpers;
 using System.Web.Mvc;
 using Trul.Application.UI.Core.Tasks;
 using Trul.WebUI.Infrastructure;
+using Trul.WebUI.Controllers;
+using Trul.Application.UI.Core.Models;
+using Trul.Application.DTO;
 
 namespace Trul.WebUI.Controllers
 {
-    public class CountryController : Controller
+    public class CountryController : BaseController
     {
         private ICountryTask countryTask;
 
@@ -18,12 +21,13 @@ namespace Trul.WebUI.Controllers
             this.countryTask = countryTask;
         }
 
-        public ActionResult Index(bool? isLoadData)
+        [Internationalization()]
+        public ActionResult Index()
         {
             var model = countryTask.Index();
-            if (isLoadData.HasValue && isLoadData.Value)
+            if (TempData["Countries"] != null)
             {
-                model.Countries = countryTask.GetCountries();
+                model.Countries = (IList<CountryDTO>)TempData["Countries"];
             }
             return View(model);
         }
@@ -34,6 +38,12 @@ namespace Trul.WebUI.Controllers
             var result = new CustomJsonResult();
             result.Data = countryTask.GetCountries();
             return result;
+        }
+
+        public ActionResult GetCountriesOnServer()
+        {
+            TempData["Countries"] = countryTask.GetCountries();
+            return RedirectToAction("Index");
         }
     }
 }

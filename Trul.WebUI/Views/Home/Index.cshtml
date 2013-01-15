@@ -1,4 +1,5 @@
 ﻿@model Trul.Application.UI.Core.Models.HomeViewModel
+@using Trul.WebUI.Helper
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,35 +7,35 @@
 <br />
 @Html.Partial("_TopMenu", "Home")
 <span data-bind="visible:IsNameNull">
-    <h3>Hi, <span data-bind="text: HomeModel.FirstName"></span></h3>
+    <h3>@this.GetLocalResource("Hi"), <span data-bind="text: HomeModel.FirstName"></span></h3>
 </span>
 <div class="alert alert-info">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
-    <h4>Heyyy!</h4>
-    What's going on?
+    <h4>@this.GetLocalResource("Title")</h4>
+    @this.GetLocalResource("SubTitle")
 </div>
 <div class="form-horizontal">
     <div class="control-group">
-        <label class="control-label" for="inputFirstName">First name:</label>
+        @Html.LabelFor(m => m.FirstName, new { @class = "control-label" })
         <div class="controls">
-            <input type="text" id="inputFirstName" data-bind="value: HomeModel.FirstName" />
+            @Html.TextBoxFor(m => m.FirstName, new { data_bind = "value: HomeModel.FirstName" })
         </div>
     </div>
     <div class="control-group">
-        <label class="control-label" for="inputLastName">Last name:</label>
+        @Html.LabelFor(m => m.LastName, new { @class = "control-label" })
         <div id="inputLastName" class="controls">
-            <input type="text" data-bind="value: HomeModel.LastName" />
+            @Html.TextBoxFor(m => m.LastName, new { data_bind = "value: HomeModel.LastName" })
         </div>
     </div>
     <div class="control-group">
-        <label class="control-label" for="ddlMenu">Menu:</label>
+        @Html.LabelFor(m => m.Countries, new { @class = "control-label" })
         <div id="ddlMenu" class="controls">
-            <select data-bind="options: HomeModel.Countries, value: HomeModel.SelectedCountry, optionsValue : 'ID', optionsText: 'Name'"></select>
+            @Html.DropDownListFor(m => m.Countries, new List<SelectListItem>(), new { data_bind = "options: HomeModel.Countries, value: HomeModel.SelectedCountry, optionsValue : 'ID', optionsText: 'Name'" })
         </div>
     </div>
 </div>
 <div class="form-actions">
-    <input type="button" data-bind="click: save" class="btn btn-large btn-primary" value="Save" />
+    <input type="button" data-bind="click: save" class="btn btn-large btn-primary" value="@this.GetLocalResource("Save")" />
 </div>
 
 @Html.Partial("_Modal")
