@@ -11,6 +11,7 @@ using System.Data.Common;
 using System.Data.SqlClient;
 using Trul.Framework;
 using Trul.Domain.Repositories;
+using Trul.Data.Mock;
 
 namespace Trul.Service
 {
@@ -19,6 +20,18 @@ namespace Trul.Service
         public IList<CountryDTO> GetCountriesBySP()
         {
             var countries = ((ICountryRepository)Repository).GetCountriesBySP();
+            return ((IEnumerable<IEntityWithTypedId<Int32>>)countries).ProjectedAsCollection<CountryDTO, Int32>();
+        }
+
+        /// <summary>
+        /// Mock service'ten data dondurur.
+        /// </summary>
+        /// <returns></returns>
+        public IList<CountryDTO> GetCountries()
+        {
+            // TODO: burayi bir factory ile yonetmek daha mantikli olacaktir.
+            var service = new MockRepository();
+            var countries = service.GetAll();
             return ((IEnumerable<IEntityWithTypedId<Int32>>)countries).ProjectedAsCollection<CountryDTO, Int32>();
         }
     }

@@ -9,5 +9,7 @@ namespace Trul.Service.Core
     public partial interface ICountryService
     {
         IList<CountryDTO> GetCountriesBySP();
+
+        IList<CountryDTO> GetCountries();
     }
 }
