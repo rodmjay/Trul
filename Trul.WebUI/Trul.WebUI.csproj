@@ -143,6 +143,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\CrosscuttingHelper.cs" />
+    <Compile Include="Helper\CustomHtmlHelper.cs" />
     <Compile Include="Helper\MapperHelper.cs" />
     <Compile Include="Helper\ResourceHelper.cs" />
     <Compile Include="Infrastructure\CustomJsonResult.cs" />

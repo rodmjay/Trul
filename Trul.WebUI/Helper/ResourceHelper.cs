@@ -15,7 +15,7 @@ namespace Trul.WebUI.Helper
 
         public static string GetGlobalResource(this HtmlHelper htmlHelper, string resourceKey)
         {
-            return htmlHelper.ViewContext.HttpContext.GetGlobalResourceObject("Resource", resourceKey) as string;
+            return htmlHelper.ViewContext.HttpContext.GetGlobalResourceObject("Resource", resourceKey) as string; 
         }
     }
 }
