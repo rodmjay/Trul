@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StackExchange.Profiling;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -24,6 +25,18 @@ namespace Trul.WebUI
             Bootstrapper.Initialise();
             CrosscuttingHelper.Initialise();
             MapperHelper.Initialise();
+
+            MiniProfilerEF.Initialize();
+        }
+
+        protected void Application_BeginRequest()
+        {
+            if (Request.IsLocal) { MiniProfiler.Start(); } //or any number of other checks, up to you 
+        }
+
+        protected void Application_EndRequest()
+        {
+            MiniProfiler.Stop(); //stop as early as you can, even earlier with MvcMiniProfiler.MiniProfiler.Stop(discardResults: true);
         }
     }
 }
