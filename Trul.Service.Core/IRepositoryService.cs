@@ -4,12 +4,10 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using Trul.Application;
-using Trul.Domain.Core;
 
 namespace Trul.Service.Core
 {
-    public interface IRepositoryService<TEntity, TDTOEntity, TId>
-        where TEntity : class, IEntityWithTypedId<TId>, new()
+    public interface IRepositoryService<TDTOEntity, TId>
         where TDTOEntity : class, IBaseObjectWithTypeId<TId>
     {
         /// <summary>

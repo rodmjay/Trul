@@ -77,14 +77,6 @@
       <Project>{66348945-351a-4cfe-bc9e-426552fff7c9}</Project>
       <Name>Trul.Application</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Trul.Domain.Core\Trul.Domain.Core.csproj">
-      <Project>{f2d33f05-9f0a-42b8-a954-e8b4296170e1}</Project>
-      <Name>Trul.Domain.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Trul.Domain\Trul.Domain.csproj">
-      <Project>{c37d056c-adf2-4fb9-88e3-3dbd3e8f903b}</Project>
-      <Name>Trul.Domain</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Trul.Infrastructure.Crosscutting\Trul.Infrastructure.Crosscutting.csproj">
       <Project>{964421c2-ddfe-4d52-8b5c-b22f60d820dc}</Project>
       <Name>Trul.Infrastructure.Crosscutting</Name>

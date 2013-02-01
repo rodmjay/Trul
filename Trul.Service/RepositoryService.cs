@@ -12,7 +12,7 @@ using Trul.Framework;
 
 namespace Trul.Service
 {
-    public class RepositoryService<TEntity, TDTOEntity, TId> : IRepositoryService<TEntity, TDTOEntity, TId>
+    public class RepositoryService<TEntity, TDTOEntity, TId> : IRepositoryService<TDTOEntity, TId>
         where TEntity : class, IEntityWithTypedId<TId>, new()
         where TDTOEntity : class, IBaseObjectWithTypeId<TId>
     {

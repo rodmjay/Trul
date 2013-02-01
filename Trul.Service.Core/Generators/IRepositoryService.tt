@@ -1,6 +1,6 @@
 ﻿<#@ include file="$(SolutionDir)Trul.Framework\Trul.ttinclude" #>
-<#@ assembly name="$(ProjectDir)$(OutDir)Trul.Domain.dll" #>
-<#@ assembly name="$(ProjectDir)$(OutDir)Trul.Domain.Core.dll" #>
+<#@ assembly name="$(SolutionDir)Trul.Domain\$(OutDir)Trul.Domain.dll" #>
+<#@ assembly name="$(SolutionDir)Trul.Domain.Core\$(OutDir)Trul.Domain.Core.dll" #>
 <#         
 var type = typeof(Trul.Domain.Core.IEntityWithTypedId<>);
 var types = AppDomain.CurrentDomain.GetAssemblies().ToList()
@@ -29,7 +29,6 @@ foreach(var item in types) {
 
 using System;
 using Trul.Application.DTO;
-using Trul.Domain.Entities;
 using Trul.Service;
 
 namespace Trul.Service.Core
@@ -37,7 +36,7 @@ namespace Trul.Service.Core
     /// <summary>
     /// I<#=entityName#>Service
     /// </summary>
-    public partial interface I<#=entityName#>Service : IRepositoryService<<#=entityName#>, <#=entityName#>DTO, <#=idType#>>
+    public partial interface I<#=entityName#>Service : IRepositoryService<<#=entityName#>DTO, <#=idType#>>
     {
 
     }

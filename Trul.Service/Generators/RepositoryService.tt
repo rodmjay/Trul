@@ -1,6 +1,6 @@
 ﻿<#@ include file="$(SolutionDir)Trul.Framework\Trul.ttinclude" #>
-<#@ assembly name="$(ProjectDir)$(OutDir)Trul.Domain.dll" #>
-<#@ assembly name="$(ProjectDir)$(OutDir)Trul.Domain.Core.dll" #>
+<#@ assembly name="$(SolutionDir)Trul.Domain\$(OutDir)Trul.Domain.dll" #>
+<#@ assembly name="$(SolutionDir)Trul.Domain.Core\$(OutDir)Trul.Domain.Core.dll" #>
 <#         
 var type = typeof(Trul.Domain.Core.IEntityWithTypedId<>);
 var types = AppDomain.CurrentDomain.GetAssemblies().ToList()
