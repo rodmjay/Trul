@@ -39,19 +39,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Castle.Core">
-      <HintPath>..\packages\Castle.Core.3.1.0\lib\net40-client\Castle.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Castle.Windsor">
-      <HintPath>..\packages\Castle.Windsor.3.1.0\lib\net40\Castle.Windsor.dll</HintPath>
-    </Reference>
-    <Reference Include="CommonServiceLocator.WindsorAdapter">
-      <HintPath>..\packages\CommonServiceLocator.WindsorAdapter.1.0\lib\NET35\CommonServiceLocator.WindsorAdapter.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Practices.ServiceLocation">
-      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -124,10 +112,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helper\CrosscuttingHelper.cs" />
-    <Compile Include="Helper\MapperHelper.cs" />
     <Compile Include="IoC\Bootstrapper.cs" />
-    <Compile Include="IoC\WindsorControllerFactory.cs" />
+    <Compile Include="IoC\ControllerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -170,14 +156,6 @@
     <ProjectReference Include="..\Trul.Application\Trul.Application.csproj">
       <Project>{66348945-351a-4cfe-bc9e-426552fff7c9}</Project>
       <Name>Trul.Application</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Trul.Infrastructure.Crosscutting.NetFrm\Trul.Infrastructure.Crosscutting.NetFrm.csproj">
-      <Project>{55769f9b-c7d2-41ab-a386-0bd5c5f9e67d}</Project>
-      <Name>Trul.Infrastructure.Crosscutting.NetFrm</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Trul.Infrastructure.Crosscutting.Windsor\Trul.Infrastructure.Crosscutting.Windsor.csproj">
-      <Project>{cb1152fe-1bca-4862-8315-bfcd962960cb}</Project>
-      <Name>Trul.Infrastructure.Crosscutting.Windsor</Name>
     </ProjectReference>
     <ProjectReference Include="..\Trul.Infrastructure.Crosscutting\Trul.Infrastructure.Crosscutting.csproj">
       <Project>{964421c2-ddfe-4d52-8b5c-b22f60d820dc}</Project>

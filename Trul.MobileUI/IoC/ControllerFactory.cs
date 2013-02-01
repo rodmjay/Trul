@@ -5,28 +5,25 @@ using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using Castle.MicroKernel.Registration;
-using Castle.Windsor;
 
-namespace Trul.WebUI.IoC
+namespace Trul.Mobile.IoC
 {
-    public class WindsorControllerFactory : DefaultControllerFactory
+    public class ControllerFactory : DefaultControllerFactory
     {
-        readonly IWindsorContainer container;
-
-        public WindsorControllerFactory(IWindsorContainer container) {
-            this.container = container;
+        public ControllerFactory() {
             var controllerTypes =
                 from t in Assembly.GetExecutingAssembly().GetTypes()
                 where typeof(IController).IsAssignableFrom(t)
                 select t;
-            foreach(var t in controllerTypes)
-                container.Register(Component.For(t).LifeStyle.Transient);
+            foreach (var t in controllerTypes)
+            {
+                Trul.Infrastructure.Crosscutting.IoC.IoC.Container.Register(t);
+            }
         }
 
         protected override IController GetControllerInstance(RequestContext requestContext, Type controllerType) {
             if(controllerType == null) return null;
-            return (IController)container.Resolve(controllerType);
+            return (IController)Trul.Infrastructure.Crosscutting.IoC.IoC.Resolve(controllerType);
         }
     }
 }

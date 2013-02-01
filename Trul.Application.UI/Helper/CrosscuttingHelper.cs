@@ -5,7 +5,7 @@ using System.Web;
 using Trul.Infrastructure.Crosscutting.Logging;
 using Trul.Infrastructure.Crosscutting.NetFramework.Logging;
 
-namespace Trul.Mobile.Helper
+namespace Trul.Application.UI.Helper
 {
     public class CrosscuttingHelper
     {

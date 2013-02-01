@@ -51,5 +51,11 @@ namespace Trul.Infrastructure.Crosscutting.Windsor
         public void RegisterSingleton(Type interfaceType, Type implementationType) {
             container.Register(Component.For(interfaceType).ImplementedBy(implementationType).LifeStyle.Singleton);
         }
+
+
+        public void Register(Type controllerType)
+        {
+            container.Register(Component.For(controllerType).LifeStyle.Transient);
+        }
     }
 }
