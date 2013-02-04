@@ -58,7 +58,8 @@ namespace Trul.Data.EntityFramework
 
         public new virtual IEnumerable<TEntity> GetAll(params Expression<Func<TEntity, object>>[] includes)
         {
-            return base.GetAll(includes).Where(e => !e.IsDeleted);
+            Expression<Func<TEntity, bool>> isDeletedCondition = vm => vm.IsDeleted == false;
+            return base.GetFiltered(isDeletedCondition, includes);
         }
 
         public override void Remove(TEntity item)
