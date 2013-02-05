@@ -18,6 +18,14 @@ namespace Trul.Application.DTO.Profiles
             Mapper.CreateMap<CountryDTO, Country>();
             Mapper.CreateMap<Person, PersonDTO>();
             Mapper.CreateMap<PersonDTO, Person>();
+            Mapper.CreateMap<UserDTO, User>();
+            Mapper.CreateMap<List<UserDTO>, List<User>>();
+            Mapper.CreateMap<List<User>, List<UserDTO>>();
+            Mapper.CreateMap<User, UserDTO>();
+            Mapper.CreateMap<RoleDTO, Role>();
+            Mapper.CreateMap<Role, RoleDTO>();
+            Mapper.CreateMap<List<RoleDTO>, List<Role>>();
+            Mapper.CreateMap<List<Role>, List<RoleDTO>>();
         }
     }
 }

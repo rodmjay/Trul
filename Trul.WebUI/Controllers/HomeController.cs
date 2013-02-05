@@ -17,7 +17,6 @@ namespace Trul.WebUI.Controllers
             this.homeTask = homeTask;
         }
 
-        [Internationalization()]
         public ActionResult Index()
         {
             var model = homeTask.Index();

@@ -15,6 +15,8 @@ namespace Trul.Service
             IoC.Container.Register(typeof(IMenuRepository), typeof(MenuRepository));
             IoC.Container.Register(typeof(ICountryRepository), typeof(CountryRepository));
             IoC.Container.Register(typeof(IPersonRepository), typeof(PersonRepository));
+            IoC.Container.Register(typeof(IUserRepository), typeof(UserRepository));
+            IoC.Container.Register(typeof(IRoleRepository), typeof(RoleRepository));
         }
     }
 }

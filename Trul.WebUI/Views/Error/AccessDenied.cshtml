@@ -1,0 +1,11 @@
+﻿@using Trul.WebUI.Helper
+@{
+    ViewBag.Title = "AccessDenied";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Partial("_TopMenu", "AccessDenied")
+
+<div class="alert alert-error">
+    <h4>@this.GetLocalResource("AccessDenied")</h4>
+</div>

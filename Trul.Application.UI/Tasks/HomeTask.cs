@@ -14,16 +14,19 @@ namespace Trul.Application.UI.Tasks
         private ICountryService countryService;
         private IMenuService menuService;
         private IPersonService personService;
+        private IUserService userService;
 
-        public HomeTask(ICountryService countryService, IPersonService personService, IMenuService menuService)
+        public HomeTask(ICountryService countryService, IPersonService personService, IMenuService menuService, IUserService userService)
         {
             this.countryService = countryService;
             this.personService = personService;
             this.menuService = menuService;
+            this.userService = userService;
         }
 
         public HomeViewModel Index()
         {
+            SetAuthenticate();
             var homeViewModel = new HomeViewModel();
 
             var aa = countryService.Get(1);
@@ -53,6 +56,11 @@ namespace Trul.Application.UI.Tasks
             homeViewModel.LastName = person.LastName;
             homeViewModel.Countries = countryService.GetAll();
             return homeViewModel;
+        }
+
+        public void SetAuthenticate()
+        {
+            var users = userService.GetAll(m => m.Roles);
         }
     }
 }

@@ -19,6 +19,27 @@ IsDeleted Bit Default(0) Not Null,
 Foreign Key(CountryID) References Country (CountryID)
 )
 
+Create Table [User] (
+UserID Int Identity Primary Key,
+UserName NVarChar(250) Not Null,
+Password NVarChar(250) Not Null,
+IsDeleted Bit Default(0) Not Null
+)
+
+Create Table [Role] (
+RoleID Int Identity Primary Key,
+UserID Int Not Null,
+RoleID Int Not Null,
+Foreign Key(UserID) References [User] (UserID),
+Foreign Key(RoleID) References [Role] (RoleID)
+)
+
+Create Table UserRole (
+UserRoleID Int Identity Primary Key,
+RoleName NVarChar(250) Not Null,
+IsDeleted Bit Default(0) Not Null
+)
+
 Insert Into Country(Name) Values('Turkey')
 Insert Into Country(Name) Values('USA')
 Insert Into Country(Name) Values('United Kingdom')

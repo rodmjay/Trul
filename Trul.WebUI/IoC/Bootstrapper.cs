@@ -17,6 +17,7 @@ namespace Trul.WebUI.IoC
         private static void Configure() {
             Trul.Infrastructure.Crosscutting.IoC.IoC.Container.Register(typeof(IHomeTask), typeof(HomeTask));
             Trul.Infrastructure.Crosscutting.IoC.IoC.Container.Register(typeof(ICountryTask), typeof(CountryTask));
+            Trul.Infrastructure.Crosscutting.IoC.IoC.Container.Register(typeof(IAccountTask), typeof(AccountTask));
         }
     }
 }

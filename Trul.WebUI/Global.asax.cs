@@ -7,7 +7,11 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Web.Script.Serialization;
+using System.Web.Security;
 using Trul.Application.UI.Helper;
+using Trul.Framework.Security;
+using Trul.Infrastructure.Crosscutting.Security;
 using Trul.WebUI.Helper;
 using Trul.WebUI.IoC;
 
@@ -38,6 +42,11 @@ namespace Trul.WebUI
         protected void Application_EndRequest()
         {
             MiniProfiler.Stop(); //stop as early as you can, even earlier with MvcMiniProfiler.MiniProfiler.Stop(discardResults: true);
+        }
+
+        protected void Application_PostAuthenticateRequest(Object sender, EventArgs e)
+        {
+            AuthenticationFactory.CreateAuthentication().PostAuthenticateRequest();
         }
     }
 }

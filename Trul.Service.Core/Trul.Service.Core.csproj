@@ -54,9 +54,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>IRepositoryService.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generators\IRoleService.cs">
+      <DependentUpon>IRepositoryService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generators\IUserService.cs">
+      <DependentUpon>IRepositoryService.tt</DependentUpon>
+    </Compile>
     <Compile Include="ICountryService.cs" />
     <Compile Include="IPersonService.cs" />
     <Compile Include="IRepositoryService.cs" />
+    <Compile Include="IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

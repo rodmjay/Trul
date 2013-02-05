@@ -61,6 +61,24 @@ namespace Trul.Application.UI.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lütfen Şifre giriniz..
+        /// </summary>
+        public static string AccountVMPassword {
+            get {
+                return ResourceManager.GetString("AccountVMPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lütfen Kullanıcı Adı giriniz..
+        /// </summary>
+        public static string AccountVMRequiredUserName {
+            get {
+                return ResourceManager.GetString("AccountVMRequiredUserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ülke.
         /// </summary>
         public static string Country {
@@ -97,11 +115,29 @@ namespace Trul.Application.UI.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Şifre.
+        /// </summary>
+        public static string Password {
+            get {
+                return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Seçilen Ülke.
         /// </summary>
         public static string SelectedCountry {
             get {
                 return ResourceManager.GetString("SelectedCountry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kullanıcı Adı.
+        /// </summary>
+        public static string UserName {
+            get {
+                return ResourceManager.GetString("UserName", resourceCulture);
             }
         }
     }

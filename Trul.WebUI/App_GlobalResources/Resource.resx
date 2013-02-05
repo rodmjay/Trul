@@ -135,6 +135,12 @@
   <data name="Language" xml:space="preserve">
     <value>Dil</value>
   </data>
+  <data name="LogOn" xml:space="preserve">
+    <value>Giriş Yap</value>
+  </data>
+  <data name="LogOut" xml:space="preserve">
+    <value>Çıkış</value>
+  </data>
   <data name="Turkish" xml:space="preserve">
     <value>Türkçe</value>
   </data>

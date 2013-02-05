@@ -31,6 +31,10 @@ namespace Trul.Data.EntityFramework
 
         public IDbSet<Country> Countries { get { return base.Set<Country>(); } }
 
+        public IDbSet<User> Users { get { return base.Set<User>(); } }
+
+        public IDbSet<Role> Roles { get { return base.Set<Role>(); } }
+
         #endregion
 
         #region IQueryableUnitOfWork Members
@@ -153,6 +157,8 @@ namespace Trul.Data.EntityFramework
             modelBuilder.Configurations.Add(new MenuEntityTypeConfiguration());
             modelBuilder.Configurations.Add(new PersonEntityTypeConfiguration());
             modelBuilder.Configurations.Add(new CountryEntityTypeConfiguration());
+            modelBuilder.Configurations.Add(new UserEntityTypeConfiguration());
+            modelBuilder.Configurations.Add(new RoleEntityTypeConfiguration());
         }
         #endregion
     }

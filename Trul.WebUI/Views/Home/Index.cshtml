@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<br />
+
 @Html.Partial("_TopMenu", "Home")
 <span data-bind="visible:IsNameNull">
     <h3>@this.GetLocalResource("Hi"), <span data-bind="text: HomeModel.FirstName"></span></h3>

@@ -1,0 +1,17 @@
+﻿@model string
+@using Trul.WebUI.Helper
+
+<ul class="nav pull-right">
+    @if (HttpContext.Current.User.Identity.IsAuthenticated)
+    { 
+        <li>@Html.ActionLink(Html.GetGlobalResource("LogOut"), "LogOut", "Account") </li>
+    }
+    <li class="divider-vertical"></li>
+    <li class="dropdown">
+        @Html.ActionToggle(@Html.GetGlobalResource("Language"))
+        <ul class="dropdown-menu">
+            <li>@Html.ActionLink(Html.GetGlobalResource("Turkish"), ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["Controller"].ToString(), new { language = "tr", culture = "TR" }, null)</li>
+            <li>@Html.ActionLink(Html.GetGlobalResource("English"), ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["Controller"].ToString(), new { language = "en", culture = "US" }, null)</li>
+        </ul>
+    </li>
+</ul>

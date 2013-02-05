@@ -19,6 +19,8 @@ namespace Trul.Application.UI
             IoC.Container.Register(typeof(ICountryService), typeof(CountryService));
             IoC.Container.Register(typeof(IPersonService), typeof(PersonService));
             IoC.Container.Register(typeof(IMenuService), typeof(MenuService));
+            IoC.Container.Register(typeof(IUserService), typeof(UserService));
+            IoC.Container.Register(typeof(IRoleService), typeof(RoleService));
         }
 
         private static void InitialiseIoC()

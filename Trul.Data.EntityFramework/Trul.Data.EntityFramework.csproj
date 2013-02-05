@@ -47,9 +47,11 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="DelRepository.cs" />
     <Compile Include="IQueryableUnitOfWork.cs" />
+    <Compile Include="Mapping\RoleEntityTypeConfiguration.cs" />
     <Compile Include="Mapping\CountryEntityTypeConfiguration.cs" />
     <Compile Include="Mapping\MenuEntityTypeConfiguration.cs" />
     <Compile Include="Mapping\PersonEntityTypeConfiguration.cs" />
+    <Compile Include="Mapping\UserEntityTypeConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\CountryRepository.cs" />
     <Compile Include="Repositories\Generators\CountryRepository.cs">
@@ -64,6 +66,12 @@
     <Compile Include="Repositories\Generators\Repository.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>Repository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\Generators\RoleRepository.cs">
+      <DependentUpon>Repository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\Generators\UserRepository.cs">
       <DependentUpon>Repository.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository.cs" />

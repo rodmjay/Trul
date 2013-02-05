@@ -21,7 +21,7 @@ namespace Trul.WebUI.Controllers
             this.countryTask = countryTask;
         }
 
-        [Internationalization()]
+        [LogonAuthorize(Roles = "2")]
         public ActionResult Index()
         {
             var model = countryTask.Index();

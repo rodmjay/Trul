@@ -203,6 +203,11 @@ namespace Trul.Data.EntityFramework
             foreach (var includeItem in includes)
             {
                 result = result.Include(includeItem);
+                // TODO: deletable entity'ler join olurkan t-sql'de isDelete = 0 konmali.
+                //if ((includeItem as LambdaExpression).Body.Type.GetGenericArguments()[0].GetInterface(typeof(Trul.Domain.Core.IDelEntity).Name) != null)
+                //{
+                //    result = result.Where(e => ((IDelEntity)e).IsDeleted == false);
+                //}
             }
             return result;
         }

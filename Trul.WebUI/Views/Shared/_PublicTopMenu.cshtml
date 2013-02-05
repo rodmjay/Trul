@@ -1,0 +1,13 @@
+﻿@model string
+@using Trul.WebUI.Helper
+<br />
+<div class="navbar">
+    <div class="navbar-inner">
+        <ul class="nav">
+            <li class="@(Model.Equals("LogOn") ? "active" : "")">
+                @Html.ActionLink(Html.GetGlobalResource("LogOn"), "LogOn", "Account")
+            </li>
+        </ul>
+        @Html.Partial("_Language")
+    </div>
+</div>
