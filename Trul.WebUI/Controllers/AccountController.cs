@@ -24,7 +24,7 @@ namespace Trul.WebUI.Controllers
         [AllowAnonymous()]
         public ActionResult LogOn()
         {
-            return View();
+            return View(new AccountViewModel());
         }
 
         [HttpPost]

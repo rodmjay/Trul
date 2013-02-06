@@ -157,6 +157,10 @@
       <Project>{66348945-351a-4cfe-bc9e-426552fff7c9}</Project>
       <Name>Trul.Application</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Trul.Framework\Trul.Framework.csproj">
+      <Project>{b884cc43-e425-4b4f-92e1-426d2f41eb7a}</Project>
+      <Name>Trul.Framework</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Trul.Infrastructure.Crosscutting\Trul.Infrastructure.Crosscutting.csproj">
       <Project>{964421c2-ddfe-4d52-8b5c-b22f60d820dc}</Project>
       <Name>Trul.Infrastructure.Crosscutting</Name>

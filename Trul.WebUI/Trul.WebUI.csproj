@@ -156,6 +156,7 @@
     <Content Include="Content\themes\base\css\bootstrap.min.css" />
     <Content Include="Content\themes\base\img\glyphicons-halflings-white.png" />
     <Content Include="Content\themes\base\img\glyphicons-halflings.png" />
+    <Content Include="Content\themes\base\trul.css" />
     <Content Include="Content\themes\fontAwesome\css\font-awesome-ie7.min.css" />
     <Content Include="Content\themes\fontAwesome\css\font-awesome.css" />
     <Content Include="Content\themes\fontAwesome\css\font-awesome.min.css" />
@@ -185,6 +186,8 @@
       <LastGenOutput>Resource.en.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Views\Home\App_LocalResources\Index.cshtml.resx" />
     <Content Include="Views\Home\App_LocalResources\Index.cshtml.en.resx" />
     <Content Include="Views\Account\App_LocalResources\LogOn.cshtml.resx" />

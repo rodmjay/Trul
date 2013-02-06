@@ -10,7 +10,6 @@
 <ul class="breadcrumb">
     <li class="active">Log On</li>
 </ul>
-<div id="result"></div>
 @using (Html.BeginForm("LogOn", "Account", FormMethod.Post, new { id = "TestForm" }))
 {
     <div class="form-horizontal">
@@ -32,8 +31,14 @@
                     @Html.CheckBoxFor(m => m.IsRememberMe)
                     @this.GetLocalResource("RememberMe")
                 </label>
-                <button type="submit" class="btn">@this.GetLocalResource("LogOn")</button>
+                <button id="btnLogin" type="submit" class="btn">@this.GetLocalResource("LogOn")</button>
             </div>
         </div>
     </div>
 }
+
+@Html.Raw(Model.Validate(new Trul.Framework.Rules.ValidateSettings
+{
+    FormID = "TestForm",
+    SubmitControlID = "btnLogin"
+}))
