@@ -53,6 +53,20 @@ namespace Trul.WebUI.Controllers
             return View(model);
         }
 
+        [AllowAnonymous()]
+        public ActionResult Register()
+        {
+            return View(new AccountViewModel());
+        }
+
+        [HttpPost]
+        [AllowAnonymous()]
+        public ActionResult Register(AccountViewModel model)
+        {
+            //TODO: register user
+            return View(model);
+        }
+
         public ActionResult LogOut()
         {
             accountTask.LogOut();

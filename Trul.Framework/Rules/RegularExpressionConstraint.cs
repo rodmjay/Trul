@@ -11,9 +11,9 @@ namespace Trul.Framework.Rules
             Pattern = pattern;
         }
 
-        public bool SatisfiedBy(object value)
+        public bool SatisfiedBy(IField value)
         {
-            return Regex.IsMatch(value.ToString(), Pattern);
+            return Regex.IsMatch(value.Value.ToString(), Pattern);
         }
 
         public abstract void Accept(IValidatorVisitor visitor);

@@ -20,7 +20,7 @@ namespace Trul.Framework.Rules
         public bool IsValid(T entity)
         {
             foreach (var rule in _rules.Where(r => r.Severity == Severity.Error))
-                if(!rule.Constraint.SatisfiedBy(entity))
+                if(!rule.Constraint.SatisfiedBy(new Field(entity)))
                     return false;
 
             return true;
@@ -28,7 +28,7 @@ namespace Trul.Framework.Rules
 
         public IEnumerable<IRule> GetBrokenRules(T entity)
         {
-            return _rules.Where(r => !r.Constraint.SatisfiedBy(entity));
+            return _rules.Where(r => !r.Constraint.SatisfiedBy(new Field(entity)));
         }
     }
 }

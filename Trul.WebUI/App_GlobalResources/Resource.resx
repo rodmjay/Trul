@@ -141,6 +141,9 @@
   <data name="LogOut" xml:space="preserve">
     <value>Çıkış</value>
   </data>
+  <data name="Register" xml:space="preserve">
+    <value>Kaydol</value>
+  </data>
   <data name="Turkish" xml:space="preserve">
     <value>Türkçe</value>
   </data>

@@ -7,6 +7,9 @@
             <li class="@(Model.Equals("LogOn") ? "active" : "")">
                 @Html.ActionLink(Html.GetGlobalResource("LogOn"), "LogOn", "Account")
             </li>
+            <li class="@(Model.Equals("Register") ? "active" : "")">
+                @Html.ActionLink(Html.GetGlobalResource("Register"), "Register", "Account")
+            </li>
         </ul>
         @Html.Partial("_Language")
     </div>

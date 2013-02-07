@@ -2,15 +2,15 @@
 @using Trul.WebUI.Helper
 
 @{
-    ViewBag.Title = this.GetLocalResource("LogOn");
+    ViewBag.Title = this.GetLocalResource("RegisterTitle");
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @Html.Partial("_PublicTopMenu", "LogOn")
 <ul class="breadcrumb">
-    <li class="active">@this.GetLocalResource("LogOn")</li>
+    <li class="active">@this.GetLocalResource("RegisterTitle")</li>
 </ul>
-@using (Html.BeginForm("LogOn", "Account", FormMethod.Post, new { id = "LogOnForm" }))
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { id = "RegisterForm" }))
 {
     <div class="form-horizontal">
         <div class="control-group">
@@ -21,24 +21,24 @@
         </div>
         <div class="control-group">
             @Html.LabelFor(m => m.Password, new { @class = "control-label" })
-            <div id="inputLastName" class="controls">
+            <div class="controls">
                 @Html.PasswordFor(m => m.Password)
             </div>
         </div>
         <div class="control-group">
+            @Html.LabelFor(m => m.PasswordAgain, new { @class = "control-label" })
             <div class="controls">
-                <label class="checkbox">
-                    @Html.CheckBoxFor(m => m.IsRememberMe)
-                    @this.GetLocalResource("RememberMe")
-                </label>
-                <button id="btnLogin" type="submit" class="btn">@this.GetLocalResource("LogOn")</button>
+                @Html.PasswordFor(m => m.PasswordAgain)
             </div>
         </div>
+    </div>
+    <div class="form-actions">
+        <button id="btnRegister" class="btn btn-primary">@this.GetLocalResource("Save")</button>
     </div>
 }
 
 @Html.Raw(Model.Validate(new Trul.Framework.Rules.ValidateSettings
 {
-    FormID = "LogOnForm",
-    SubmitControlID = "btnLogin"
+    FormID = "RegisterForm",
+    SubmitControlID = "btnRegister"
 }))

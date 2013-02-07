@@ -16,6 +16,12 @@ namespace Trul.Framework.Rules.SyntaxHelpers
             return propElement;
         }
 
+        public static IPropertyElement<T> WhereProperty<T>(this IValidator<T> validator, Expression<Func<T, object>> prop, Expression<Func<T, object>> propRight)
+        {
+            var propElement = new PropertyElement<T>(prop, propRight, validator);
+            return propElement;
+        }
+
         public static IValidator<T> AsError<T>(this IValidator<T> validator)
         {
             validator.LastRule().Severity = Severity.Error;

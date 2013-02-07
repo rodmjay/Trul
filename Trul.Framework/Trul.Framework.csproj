@@ -45,6 +45,8 @@
     <Compile Include="Infrastructure\Expressions\SingleParameterReplacingExpressionVisitor.cs" />
     <Compile Include="Infrastructure\Expressions\TranslatingExpressionVisitor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rules\EqualToConstraint.cs" />
+    <Compile Include="Rules\Field.cs" />
     <Compile Include="Rules\IClientValidatorVisitor.cs" />
     <Compile Include="Rules\EmailConstraint.cs" />
     <Compile Include="Rules\IConstraint.cs" />
@@ -70,6 +72,7 @@
     <Compile Include="Security\CustomPrincipal.cs" />
     <Compile Include="Security\CustomPrincipalSerializeModel.cs" />
     <Compile Include="Security\ICustomPrincipal.cs" />
+    <Compile Include="Security\PasswordHash.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Trul.ttinclude" />

@@ -186,6 +186,8 @@
       <LastGenOutput>Resource.en.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <Content Include="Views\Account\App_LocalResources\Register.cshtml.resx" />
+    <Content Include="Views\Account\App_LocalResources\Register.cshtml.en.resx" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Views\Home\App_LocalResources\Index.cshtml.resx" />
@@ -217,6 +219,7 @@
     <Content Include="Views\Shared\_PublicTopMenu.cshtml" />
     <Content Include="Views\Shared\_Language.cshtml" />
     <Content Include="Views\Error\AccessDenied.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

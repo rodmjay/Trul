@@ -2,9 +2,9 @@ namespace Trul.Framework.Rules
 {
     public class StringNotNullOrEmptyConstraint : IConstraint
     {
-        public bool SatisfiedBy(object value)
+        public bool SatisfiedBy(IField value)
         {
-            return value != null && value.ToString() != string.Empty;
+            return value.Value != null && value.Value.ToString() != string.Empty;
         }
 
         public void Accept(IValidatorVisitor visitor)

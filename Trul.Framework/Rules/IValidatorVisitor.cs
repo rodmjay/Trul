@@ -8,6 +8,8 @@ namespace Trul.Framework.Rules
         void Visit(StringMaxLengthConstraint constraint);
         void Visit(EmailConstraint constraint);
         void Visit(StringNotNullOrEmptyConstraint constraint);
+        void Visit(EqualToConstraint constraint);
         void Visit<T>(PropertyValueConstraint<T> constraint);
+        void Visit<T>(PropertiesValueConstraint<T> constraint);
     }
 }

@@ -18,6 +18,9 @@ namespace Trul.Application.UI.Core.Models
         [Display(Name = "Password", ResourceType = typeof(Resources.Resource))]
         public string Password { get; set; }
 
+        [Display(Name = "PasswordAgain", ResourceType = typeof(Resources.Resource))]
+        public string PasswordAgain { get; set; }
+
         public bool IsRememberMe { get; set; }
 
         public override IEnumerable<IRulesGroup> ValidatorRules()
@@ -33,6 +36,9 @@ namespace Trul.Application.UI.Core.Models
 
                                .WhereProperty(p => p.Password).SatisfiedAs(Should.NotBeNullOrEmpty)
                                     .WithReason(Resources.Resource.AccountVMPassword).AsError()
+
+                               .WhereProperty(p => p.PasswordAgain, p=>p.Password).SatisfiedAs(Should.EqualTo)
+                                    .WithReason(Resources.Resource.AccountVMPasswordAgain).AsError()
                        };
         }
     }

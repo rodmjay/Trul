@@ -70,6 +70,15 @@ namespace Trul.Application.UI.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Şifreler aynı olmalıdır..
+        /// </summary>
+        public static string AccountVMPasswordAgain {
+            get {
+                return ResourceManager.GetString("AccountVMPasswordAgain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lütfen Kullanıcı Adı giriniz..
         /// </summary>
         public static string AccountVMRequiredUserName {
@@ -120,6 +129,15 @@ namespace Trul.Application.UI.Core.Resources {
         public static string Password {
             get {
                 return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Şifre Tekrar.
+        /// </summary>
+        public static string PasswordAgain {
+            get {
+                return ResourceManager.GetString("PasswordAgain", resourceCulture);
             }
         }
         

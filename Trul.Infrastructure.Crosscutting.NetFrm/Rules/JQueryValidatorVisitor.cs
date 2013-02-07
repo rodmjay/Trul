@@ -42,6 +42,20 @@ namespace Trul.Infrastructure.Crosscutting.NetFramework.Rules
             constraint.InnerConstraint.Accept(this);
         }
 
+        public void Visit<T>(PropertiesValueConstraint<T> constraint)
+        {
+            if (!_rules.ContainsKey(constraint.FieldName))
+                _rules.Add(constraint.FieldName, new StringBuilder());
+
+            if (!_messages.ContainsKey(constraint.FieldName))
+                _messages.Add(constraint.FieldName, new StringBuilder());
+
+            _currentRules = _rules[constraint.FieldName];
+            _currentMessages = _messages[constraint.FieldName];
+
+            constraint.InnerConstraint.Accept(this);
+        }
+
         public void Visit(StringMaxLengthConstraint constraint)
         {
             _currentRules.Append("maxlength:" + constraint.MaxLength + ",");
@@ -58,6 +72,12 @@ namespace Trul.Infrastructure.Crosscutting.NetFramework.Rules
         {
             _currentRules.Append("required:true,");
             _currentMessages.Append("required:\"" + _currentRule.Message + "\",");
+        }
+
+        public void Visit(EqualToConstraint constraint)
+        {
+            _currentRules.AppendFormat("equalTo: \"#{0}\"\"", (_currentRule.Constraint as ICompareField).RightFieldName);
+             _currentMessages.Append("equalTo:\"" + _currentRule.Message + "\",");
         }
 
         public string VisitValidator(IEnumerable<IRulesGroup> rulesGroups, ValidateSettings settings)

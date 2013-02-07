@@ -120,6 +120,9 @@
   <data name="AccountVMPassword" xml:space="preserve">
     <value>Password is required.</value>
   </data>
+  <data name="AccountVMPasswordAgain" xml:space="preserve">
+    <value>Passwords must be the same.</value>
+  </data>
   <data name="AccountVMRequiredUserName" xml:space="preserve">
     <value>User Name is required.</value>
   </data>
@@ -137,6 +140,9 @@
   </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
+  </data>
+  <data name="PasswordAgain" xml:space="preserve">
+    <value>Password Again</value>
   </data>
   <data name="SelectedCountry" xml:space="preserve">
     <value>Select Country</value>
