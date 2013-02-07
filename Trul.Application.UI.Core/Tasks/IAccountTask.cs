@@ -10,6 +10,8 @@ namespace Trul.Application.UI.Core.Tasks
     {
         void Login(AccountViewModel model);
 
+        void Register(AccountViewModel model);
+
         void LogOut();
     }
 }

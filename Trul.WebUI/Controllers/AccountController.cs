@@ -63,8 +63,8 @@ namespace Trul.WebUI.Controllers
         [AllowAnonymous()]
         public ActionResult Register(AccountViewModel model)
         {
-            //TODO: register user
-            return View(model);
+            accountTask.Register(model);
+            return RedirectToAction("LogOn");
         }
 
         public ActionResult LogOut()

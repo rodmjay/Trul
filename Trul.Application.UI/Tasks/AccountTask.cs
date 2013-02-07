@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web.Script.Serialization;
+using Trul.Application.DTO;
 using Trul.Application.UI.Core.Models;
 using Trul.Application.UI.Core.Tasks;
 using Trul.Framework.Security;
@@ -23,9 +24,11 @@ namespace Trul.Application.UI.Tasks
 
         public void Login(AccountViewModel model)
         {
-            var user = userService.GetByUserName(model.UserName);
-            if (user != null && user.Password == model.Password)
+            var password = userService.GetPasswordByUserName(model.UserName);
+            if (PasswordHash.ValidatePassword(model.Password, password))
             {
+                var user = userService.GetByUserName(model.UserName);
+
                 var authenticationService = AuthenticationFactory.CreateAuthentication();
 
                 var serializeModel = new CustomPrincipalSerializeModel();
@@ -40,6 +43,16 @@ namespace Trul.Application.UI.Tasks
 
                 authenticationService.Login(model.UserName, model.Password, model.IsRememberMe, userData);
             }
+        }
+
+        public void Register(AccountViewModel model)
+        {
+            userService.Register(
+                new UserDTO
+                {
+                    UserName = model.UserName
+                },
+                model.Password);
         }
 
         public void LogOut()

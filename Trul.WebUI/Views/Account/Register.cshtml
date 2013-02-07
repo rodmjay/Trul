@@ -6,9 +6,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@Html.Partial("_PublicTopMenu", "LogOn")
+@Html.Partial("_PublicTopMenu", "Register")
 <ul class="breadcrumb">
-    <li class="active">@this.GetLocalResource("RegisterTitle")</li>
+    <li class="active">@this.GetLocalResource("Register")</li>
 </ul>
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { id = "RegisterForm" }))
 {
