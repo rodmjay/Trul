@@ -116,7 +116,7 @@ namespace Trul.Data.EntityFramework
             }
         }
 
-        public virtual TEntity Get(TId id, params Expression<Func<TEntity, object>>[] includes)
+        public virtual IQueryable<TEntity> Get(TId id, params Expression<Func<TEntity, object>>[] includes)
         {
             if (id != null)
             {
@@ -132,23 +132,23 @@ namespace Trul.Data.EntityFramework
                         ),
                     new[] { itemParameter }
                     );
-                return GetSetAsQueryable(includes).Where(whereExpression).Single();
+                return GetSetAsQueryable(includes).Where(whereExpression);
             }
             else
                 return null;
         }
 
-        public virtual IEnumerable<TEntity> GetAll(params Expression<Func<TEntity, object>>[] includes)
+        public virtual IQueryable<TEntity> GetAll(params Expression<Func<TEntity, object>>[] includes)
         {
             return GetSetAsQueryable(includes);
         }
 
-        public virtual IEnumerable<TEntity> AllMatching(Trul.Domain.Core.Specification.ISpecification<TEntity> specification, params Expression<Func<TEntity, object>>[] includes)
+        public virtual IQueryable<TEntity> AllMatching(Trul.Domain.Core.Specification.ISpecification<TEntity> specification, params Expression<Func<TEntity, object>>[] includes)
         {
             return GetSetAsQueryable(includes).Where(specification.SatisfiedBy());
         }
 
-        public virtual IEnumerable<TEntity> GetPaged<KProperty>(int pageIndex, int pageCount, System.Linq.Expressions.Expression<Func<TEntity, KProperty>> orderByExpression, bool ascending, params Expression<Func<TEntity, object>>[] includes)
+        public virtual IQueryable<TEntity> GetPaged<KProperty>(int pageIndex, int pageCount, System.Linq.Expressions.Expression<Func<TEntity, KProperty>> orderByExpression, bool ascending, params Expression<Func<TEntity, object>>[] includes)
         {
             var set = GetSetAsQueryable();
 
@@ -166,7 +166,7 @@ namespace Trul.Data.EntityFramework
             }
         }
 
-        public virtual IEnumerable<TEntity> GetFiltered(System.Linq.Expressions.Expression<Func<TEntity, bool>> filter, params Expression<Func<TEntity, object>>[] includes)
+        public virtual IQueryable<TEntity> GetFiltered(System.Linq.Expressions.Expression<Func<TEntity, bool>> filter, params Expression<Func<TEntity, object>>[] includes)
         {
             return GetSetAsQueryable(includes).Where(filter);
         }

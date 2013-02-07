@@ -53,13 +53,13 @@ namespace Trul.Domain.Core
         /// </summary>
         /// <param name="id">Entity key value</param>
         /// <returns></returns>
-        TEntity Get(TId id, params Expression<Func<TEntity, object>>[] includes);
+        IQueryable<TEntity> Get(TId id, params Expression<Func<TEntity, object>>[] includes);
 
         /// <summary>
         /// Get all elements of type TEntity in repository
         /// </summary>
         /// <returns>List of selected elements</returns>
-        IEnumerable<TEntity> GetAll(params Expression<Func<TEntity, object>>[] includes);
+        IQueryable<TEntity> GetAll(params Expression<Func<TEntity, object>>[] includes);
 
         /// <summary>
         /// Get all elements of type TEntity in repository
@@ -69,15 +69,15 @@ namespace Trul.Domain.Core
         /// <param name="orderByExpression">Order by expression for this query</param>
         /// <param name="ascending">Specify if order is ascending</param>
         /// <returns>List of selected elements</returns>
-        IEnumerable<TEntity> GetPaged<KProperty>(int pageIndex, int pageCount, Expression<Func<TEntity, KProperty>> orderByExpression, bool ascending, params Expression<Func<TEntity, object>>[] includes);
+        IQueryable<TEntity> GetPaged<KProperty>(int pageIndex, int pageCount, Expression<Func<TEntity, KProperty>> orderByExpression, bool ascending, params Expression<Func<TEntity, object>>[] includes);
 
         /// <summary>
         /// Get  elements of type TEntity in repository
         /// </summary>
         /// <param name="filter">Filter that each element do match</param>
         /// <returns>List of selected elements</returns>
-        IEnumerable<TEntity> GetFiltered(Expression<Func<TEntity, bool>> filter, params Expression<Func<TEntity, object>>[] includes);
+        IQueryable<TEntity> GetFiltered(Expression<Func<TEntity, bool>> filter, params Expression<Func<TEntity, object>>[] includes);
 
-        IEnumerable<TEntity> AllMatching(Trul.Domain.Core.Specification.ISpecification<TEntity> specification, params Expression<Func<TEntity, object>>[] includes);
+        IQueryable<TEntity> AllMatching(Trul.Domain.Core.Specification.ISpecification<TEntity> specification, params Expression<Func<TEntity, object>>[] includes);
     }
 }

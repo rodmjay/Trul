@@ -48,7 +48,7 @@ namespace Trul.Service
             {
                 translatedIncludes = includes.Select(inc => TranslateInclude<Func<TEntity, object>>(inc)).ToArray();
             }
-            return Repository.Get(id, translatedIncludes).ProjectedAs<TDTOEntity, TId>();
+            return Repository.Get(id, translatedIncludes).Single().ProjectedAs<TDTOEntity, TId>();
         }
 
         public virtual IList<TDTOEntity> GetAll(params Expression<Func<TDTOEntity, object>>[] includes)

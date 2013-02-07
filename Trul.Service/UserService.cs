@@ -15,7 +15,7 @@ namespace Trul.Service
     {
         public string GetPasswordByUserName(string userName)
         {
-            return GetUserByUserName(userName).Password;
+            return Repository.AllMatching(UserSpecifications.UserName(userName)).Select(m => m.Password).FirstOrDefault();
         }
 
         public void ChangePassword(UserDTO user, string password)

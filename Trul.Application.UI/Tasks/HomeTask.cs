@@ -26,7 +26,6 @@ namespace Trul.Application.UI.Tasks
 
         public HomeViewModel Index()
         {
-            SetAuthenticate();
             var homeViewModel = new HomeViewModel();
 
             var aa = countryService.Get(1);
@@ -36,7 +35,7 @@ namespace Trul.Application.UI.Tasks
             var menu = new MenuDTO();
             menu.ApplicationCode = "code 1";
             menu.LinkName = "link 1";
-            menuService.Add(menu);
+            //menuService.Add(menu);
             //var menus = menuService.GetAll();
             //menuService.Delete(menus.First());
 
@@ -56,11 +55,6 @@ namespace Trul.Application.UI.Tasks
             homeViewModel.LastName = person.LastName;
             homeViewModel.Countries = countryService.GetAll();
             return homeViewModel;
-        }
-
-        public void SetAuthenticate()
-        {
-            var users = userService.GetAll(m => m.Roles);
         }
     }
 }
