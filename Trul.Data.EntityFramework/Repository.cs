@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Objects;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
+using System.Text;
 using Trul.Data.Core;
 using Trul.Data.EntityFramework.Resources;
 using Trul.Domain.Core;
@@ -203,15 +205,49 @@ namespace Trul.Data.EntityFramework
             foreach (var includeItem in includes)
             {
                 result = result.Include(includeItem);
-                // TODO: deletable entity'ler join olurkan t-sql'de isDelete = 0 konmali.
-                //if ((includeItem as LambdaExpression).Body.Type.GetGenericArguments()[0].GetInterface(typeof(Trul.Domain.Core.IDelEntity).Name) != null)
-                //{
-                //    result = result.Where(e => ((IDelEntity)e).IsDeleted == false);
-                //}
             }
             return result;
         }
         #endregion
 
+    }
+
+    public static class ObjectQueryExtensions
+    {
+        public static IQueryable<T> Include<T, TProperty>(this IQueryable<T> query, Expression<Func<T, TProperty>> selector) where T : class
+        {
+            string propertyPath = GetPropertyPath(selector);
+            var result = query.Include(propertyPath);
+            if (selector.Body.Type.GetInterface(typeof(Trul.Domain.Core.IDelEntity).Name) != null)
+            {
+                ParameterExpression parameterExpression = Expression.Parameter(typeof(T), "x");
+                var navigationProperty = typeof(T).GetProperty(propertyPath);
+                var isDeleted = typeof(IDelEntity).GetProperty("IsDeleted");
+                var navigationPropertyAccess = Expression.MakeMemberAccess(parameterExpression, navigationProperty);
+                var expIsDeleted = Expression.MakeMemberAccess(navigationPropertyAccess, isDeleted);
+                ConstantExpression constantExpression = Expression.Constant(false, typeof(bool));
+                BinaryExpression binaryExpression = Expression.Equal(expIsDeleted, constantExpression);
+                Expression<Func<T, bool>> expression = Expression.Lambda<Func<T, bool>>(binaryExpression, new ParameterExpression[] { parameterExpression });
+                result = result.Where(expression);
+            }
+            return result;
+        }
+
+        public static string GetPropertyPath<T, TProperty>(Expression<Func<T, TProperty>> selector)
+        {
+            StringBuilder sb = new StringBuilder();
+            MemberExpression memberExpr = selector.Body as MemberExpression;
+            while (memberExpr != null)
+            {
+                string name = memberExpr.Member.Name;
+                if (sb.Length > 0)
+                    name = name + ".";
+                sb.Insert(0, name);
+                if (memberExpr.Expression is ParameterExpression)
+                    return sb.ToString();
+                memberExpr = memberExpr.Expression as MemberExpression;
+            }
+            throw new ArgumentException("The expression must be a MemberExpression", "selector");
+        }
     }
 }
