@@ -45,8 +45,12 @@ namespace Trul.Framework.Security
         /// <returns>True if the password is correct. False otherwise.</returns>
         public static bool ValidatePassword(string password, string goodHash)
         {
+            if (string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(goodHash)) return false;
             // Extract the parameters from the hash
             string[] split = goodHash.Split(SEPERATOR.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+
+            if (split == null || split.Count() < 2) return false;
+
             int iterations = Int32.Parse(split[ITERATION_INDEX]);
             byte[] salt = Convert.FromBase64String(split[SALT_INDEX]);
             byte[] hash = Convert.FromBase64String(split[PBKDF2_INDEX]);
