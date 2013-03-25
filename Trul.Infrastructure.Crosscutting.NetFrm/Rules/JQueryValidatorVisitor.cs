@@ -28,7 +28,16 @@ namespace Trul.Infrastructure.Crosscutting.NetFramework.Rules
         public void Visit<T>(PropertyValueConstraint<T> constraint)
         {
             //var fieldName = typeof(T).Name + "$" + ((MemberExpression)constraint.FieldExpression.Body).Member.Name;
-            var fieldName = ((MemberExpression)constraint.FieldExpression.Body).Member.Name;
+            var fieldName = string.Empty;
+            if (constraint.FieldExpression.Body is MemberExpression)
+            {
+                fieldName = ((MemberExpression)constraint.FieldExpression.Body).Member.Name;
+            }
+            else
+            {
+                var op = ((UnaryExpression)constraint.FieldExpression.Body).Operand;
+                fieldName = ((MemberExpression)op).Member.Name;
+            }  
 
             if (!_rules.ContainsKey(fieldName))
                 _rules.Add(fieldName, new StringBuilder());
